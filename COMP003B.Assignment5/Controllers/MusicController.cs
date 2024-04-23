@@ -75,6 +75,7 @@ namespace COMP003B.Assignment5.Controllers
             music.Genre = updatedMusic.Genre;
             music.Year = updatedMusic.Year;
 
+            // return NoContent
             return NoContent();
         }
 
