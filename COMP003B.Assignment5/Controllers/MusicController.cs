@@ -60,7 +60,7 @@ namespace COMP003B.Assignment5.Controllers
         public ActionResult<Music> UpdateMusic(int id, Music updatedMusic)
         {
             // look for music by id
-            var music = _music.Find(_music => _music.Id == id);
+            var music = _music.Find(m => m.Id == id);
 
             // if not found, return BadRequest
             if (music == null)
@@ -80,6 +80,22 @@ namespace COMP003B.Assignment5.Controllers
 
         // DELETE (delete): api/music/1
         [HttpDelete]
+        public ActionResult DeleteMusic(int id)
+        {
+            // find music by id
+            var music = _music.Find(m => m.Id == id);
+
+            // if not found, return NotFound
+            if (music == null)
+            {
+                return NotFound();
+            }
+
+            // remove from list
+            _music.Remove(music);
+
+            return NoContent();
+        }
 
     }
 }
